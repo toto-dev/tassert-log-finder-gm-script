@@ -57,23 +57,27 @@ function log(txt, replaceLast = false) {
 
 function processLogs(logs) {
   log('Completed log download');
-  let tripwireLog = logs.response.match(/.*Tripwire assertion.*/)[0]
-  log(`Found log: ${tripwireLog}`);
-  let rawJsonLog = tripwireLog.match(/{.*}/)[0];
-  let jsonLog = JSON.parse(rawJsonLog);
+  try {
+    let tripwireLog = logs.response.match(/^.*Tripwire assertion.*$/m)[0]
+    log(`Found log: ${tripwireLog}`);
+    let rawJsonLog = tripwireLog.match(/{.*}/)[0];
+    let jsonLog = JSON.parse(rawJsonLog);
 
-  let prettyLog = `${JSON.stringify(jsonLog.msg)}\n${
-      JSON.stringify(jsonLog.attr.error, null, 2)}`;
+    let prettyLog = `${JSON.stringify(jsonLog.msg)}\n${
+        JSON.stringify(jsonLog.attr.error, null, 2)}`;
 
-  // Display the log in text area in pretty format
-  let resDiv = document.createElement('textArea');
-  resDiv.setAttribute('rows', 10);
-  resDiv.innerHTML = prettyLog;
-  document.getElementById(consoleIdSelector).appendChild(resDiv);
+    // Display the log in text area in pretty format
+    let resDiv = document.createElement('textArea');
+    resDiv.setAttribute('rows', 10);
+    resDiv.innerHTML = prettyLog;
+    document.getElementById(consoleIdSelector).appendChild(resDiv);
 
-  // Copy the log to the clipboard
-  GM_setClipboard(prettyLog);
-  log("Log copied to clipboard");
+    // Copy the log to the clipboard
+    GM_setClipboard(prettyLog);
+    log("Log copied to clipboard");
+  } catch (error) {
+    log(`Encoutered error while processing logs: ${error}`);
+  }
 }
 
 function processBfgInfo(bfgInfo) {
