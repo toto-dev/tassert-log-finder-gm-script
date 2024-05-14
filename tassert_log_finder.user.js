@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://buildbaron.corp.mongodb.com/ui/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      -
 // @homepageURL https://github.com/toto-dev/tassert-log-finder-gm-script
 // @updateUrl   https://github.com/toto-dev/tassert-log-finder-gm-script/raw/main/tassert_log_finder.user.js
