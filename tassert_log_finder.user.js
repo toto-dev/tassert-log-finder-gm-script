@@ -131,7 +131,7 @@ function addConsoleDiv() {
   let consoleDiv = document.createElement('div');
   consoleDiv.setAttribute('class', 'row');
   consoleDiv.innerHTML = `
-    <div class="bp3-card bp3-elevation-3">
+    <div class="bp3-card bp3-elevation-3 full-width">
       <h3 class="bp3-heading padded-heading">Console</h3>
       <div id="console-output" class="buildbaron-noformat">
       </div>
