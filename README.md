@@ -1,4 +1,4 @@
-# MongoDB BuildBaron script to extrapolate tassert logs from BFGs
+# MongoDB BuildBaron script to extract tassert logs from BFGs
 A user script for the browser that adds a custom button to the MongoDB BuildBaron dashboard that allows to quickly locate Tripwire assertion logs for a specific BFG
 
 # Installation
